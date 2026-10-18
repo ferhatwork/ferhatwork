@@ -2,10 +2,8 @@
 
 <img src="assets/durum.svg" width="100%" alt="ferhatwork --durum: Ferhat Özdemir, 9 yıl e-ticaret. Yayında: Profitcen, Sideleaf, Profitcen Tray. Yapımda: uncus.si.">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/totem-yolu-dark.svg">
-  <img src="assets/totem-yolu-light.svg" width="100%" alt="Mini Totem son bir yılın katkı takviminde köfte topluyor">
-</picture>
+<img src="assets/totem-yolu-dark.svg#gh-dark-mode-only" width="100%" alt="Mini Totem son bir yılın katkı takviminde köfte topluyor">
+<img src="assets/totem-yolu-light.svg#gh-light-mode-only" width="100%" alt="Mini Totem son bir yılın katkı takviminde köfte topluyor">
 
 <br>
 
