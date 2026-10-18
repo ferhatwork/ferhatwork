@@ -78,7 +78,11 @@ function totemYolu(t, tema) {
   // yılan sırası: çift sütun aşağı, tek sütun yukarı
   const sira = [];
   t.haftalar.forEach((w, c) => { const idx = w.map((_, r) => r); if (c % 2) idx.reverse(); idx.forEach((r) => sira.push({ c, r })); });
-  const N = sira.length, ADIM = 0.11, DUR = +(N * ADIM + 2.4).toFixed(2);
+  // Totem boş günlerde oyalanmasın: yalnızca köfteli günlerin üstünden zıplayarak geçer
+  const dolu = new Set(hucreler.filter((h) => h.s).map((h) => `${h.c}-${h.r}`));
+  const durak = sira.filter((p) => dolu.has(`${p.c}-${p.r}`));
+  if (durak.length) { sira.length = 0; sira.push(...durak); }
+  const N = sira.length, ADIM = +Math.min(0.32, 36 / N).toFixed(3), DUR = +(N * ADIM + 2.4).toFixed(2);
   const merkez = ({ c, r }) => [X0 + c * P + H / 2, Y0 + r * P + H / 2];
   const yol = 'M' + sira.map((p) => merkez(p).map((v) => v.toFixed(1)).join(' ')).join(' L');
   const zaman = new Map(sira.map((p, i) => [`${p.c}-${p.r}`, (i * ADIM) / DUR]));
@@ -102,8 +106,8 @@ function totemYolu(t, tema) {
 .l{font:400 12px ${MONO};letter-spacing:2.4px;fill:${T.vurgu}}
 .b{font:400 30px ${SERIF};letter-spacing:-.6px;fill:${T.yazi}}
 .k{font:400 12px ${MONO};letter-spacing:.6px;fill:${T.soluk}}
-.zipla{animation:z ${(ADIM * 2).toFixed(2)}s ease-in-out infinite}
-@keyframes z{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}${AZALT}</style>
+.zipla{animation:z ${ADIM}s ease-in-out infinite}
+@keyframes z{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}${AZALT}</style>
 <defs><clipPath id="w"><rect width="${W}" height="${Hh}" rx="18"/></clipPath><radialGradient id="rg" cx=".1" cy=".2" r=".7"><stop offset="0" stop-color="#C0634F" stop-opacity=".18"/><stop offset="1" stop-color="#C0634F" stop-opacity="0"/></radialGradient></defs>
 <g clip-path="url(#w)"><rect width="${W}" height="${Hh}" fill="${T.zemin}"/><rect width="${W}" height="${Hh}" fill="url(#rg)"/>
 <text class="l" x="${X0}" y="42">MİNİ TOTEM'İN KÖFTE YOLU</text>
