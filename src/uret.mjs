@@ -26,8 +26,8 @@ const SERIF = '"Young Serif",Georgia,serif';
 const AZALT = '@media (prefers-reduced-motion:reduce){*{animation:none!important}}';
 
 const TEMA = {
-  dark: { bos: '#1d1814', bosK: '#2a231d', yazi: '#F5EBDD', soluk: 'rgba(245,235,221,.55)', vurgu: '#E2B48A', kofte: ['#9a5532', '#a85d35', '#b8663a', '#c8733f'], parlak: '#f2c49a' },
-  light: { bos: '#efe6d8', bosK: '#e2d5c1', yazi: '#262421', soluk: 'rgba(38,36,33,.6)', vurgu: '#8B3F32', kofte: ['#a5603a', '#97502d', '#874427', '#763920'], parlak: '#e9b07c' },
+  dark: { zemin: '#17120e', bos: '#1d1814', bosK: '#2a231d', yazi: '#F5EBDD', soluk: 'rgba(245,235,221,.55)', vurgu: '#E2B48A', kofte: ['#9a5532', '#a85d35', '#b8663a', '#c8733f'], parlak: '#f2c49a' },
+  light: { zemin: '#FBF5EA', bos: '#efe6d8', bosK: '#e2d5c1', yazi: '#262421', soluk: 'rgba(38,36,33,.6)', vurgu: '#8B3F32', kofte: ['#a5603a', '#97502d', '#874427', '#763920'], parlak: '#e9b07c' },
 };
 
 // ------------------------------------------------------------------ veri
@@ -72,7 +72,7 @@ function ornekTakvim() {
 // ------------------------------------------------------------------ 1) Totem'in köfte yolu
 function totemYolu(t, tema) {
   const T = TEMA[tema];
-  const P = 20, H = 15, X0 = 30, Y0 = 116;
+  const P = 20, H = 15, X0 = 40, Y0 = 126;
   const hucreler = [];
   t.haftalar.forEach((w, c) => w.forEach((d, r) => hucreler.push({ c, r, ...d })));
   // yılan sırası: çift sütun aşağı, tek sütun yukarı
@@ -84,7 +84,7 @@ function totemYolu(t, tema) {
   const zaman = new Map(sira.map((p, i) => [`${p.c}-${p.r}`, (i * ADIM) / DUR]));
   const sonT = (N * ADIM) / DUR;
   const W = X0 * 2 + t.haftalar.length * P - (P - H);
-  const Hh = Y0 + 7 * P + 34;
+  const Hh = Y0 + 7 * P + 52;
   let kare = '', kofte = '';
   for (const h of hucreler) {
     const x = X0 + h.c * P, y = Y0 + h.r * P;
@@ -104,16 +104,19 @@ function totemYolu(t, tema) {
 .k{font:400 12px ${MONO};letter-spacing:.6px;fill:${T.soluk}}
 .zipla{animation:z ${(ADIM * 2).toFixed(2)}s ease-in-out infinite}
 @keyframes z{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}${AZALT}</style>
-<text class="l" x="${X0}" y="30">MİNİ TOTEM'İN KÖFTE YOLU</text>
-<text class="b" x="${X0 - 2}" y="66">Son bir yılda ${sayi(t.toplam)} katkı</text>
-<text class="k" x="${W - X0}" y="40" text-anchor="end">en uzun seri ${s.enUzun} gün · ${s.aktif} üretken gün</text>
-<text class="k" x="${W - X0}" y="62" text-anchor="end">her köfte bir gün · koyusu daha dolu</text>
+<defs><clipPath id="w"><rect width="${W}" height="${Hh}" rx="18"/></clipPath><radialGradient id="rg" cx=".1" cy=".2" r=".7"><stop offset="0" stop-color="#C0634F" stop-opacity=".18"/><stop offset="1" stop-color="#C0634F" stop-opacity="0"/></radialGradient></defs>
+<g clip-path="url(#w)"><rect width="${W}" height="${Hh}" fill="${T.zemin}"/><rect width="${W}" height="${Hh}" fill="url(#rg)"/>
+<text class="l" x="${X0}" y="42">MİNİ TOTEM'İN KÖFTE YOLU</text>
+<text class="b" x="${X0 - 2}" y="78">Son bir yılda ${sayi(t.toplam)} katkı</text>
+<text class="k" x="${W - X0}" y="40" text-anchor="end" dy="12">en uzun seri ${s.enUzun} gün · ${s.aktif} üretken gün</text>
+<text class="k" x="${W - X0}" y="62" text-anchor="end" dy="12">her köfte bir gün · koyusu daha dolu</text>
 ${kare}${kofte}
 <g><g class="zipla"><ellipse cx="0" cy="6" rx="10" ry="3" fill="#000" opacity=".25"/><image href="${webp('totem-kucuk.webp')}" x="-17" y="-44" width="34" height="49"/></g>
 <animateMotion dur="${DUR}s" repeatCount="indefinite" path="${yol} L${merkez(sira[N - 1]).join(' ')}" keyPoints="0;1;1" keyTimes="0;${sonT.toFixed(4)};1" calcMode="linear"/></g>
-<text class="k" x="${X0}" y="${Hh - 8}">${toplananSay} köfte · takvim her gece yenilenir</text>
+<text class="k" x="${X0}" y="${Hh - 22}">${toplananSay} köfte · takvim her gece yenilenir</text>
+<rect x=".75" y=".75" width="${W - 1.5}" height="${Hh - 1.5}" rx="17.5" fill="none" stroke="rgba(245,235,221,.12)" stroke-width="1.5"/></g>
 </svg>`;
-  yaz(`totem-yolu-${tema}.svg`, svg);
+  yaz(tema === 'dark' ? 'totem-yolu.svg' : `totem-yolu-${tema}.svg`, svg);
 }
 
 // ------------------------------------------------------------------ 2) terminal durum kartı
@@ -188,14 +191,14 @@ async function oyunIsle() {
 const kip = process.argv[2];
 if (kip === 'gunluk') {
   const t = await takvim(); const v = await sonVideo();
-  totemYolu(t, 'dark'); totemYolu(t, 'light'); durumKarti(t, v);
+  totemYolu(t, 'dark'); durumKarti(t, v);
   oyunCiz(oyunDurumu()); // rüzgâr bayrağı vb. her gün tazelenir
   if (!fs.existsSync(OUT('oyun/a1g1.svg'))) dugmeler();
 } else if (kip === 'oyun') {
   await oyunIsle();
 } else if (kip === 'ornek') {
   const t = ornekTakvim();
-  totemYolu(t, 'dark'); totemYolu(t, 'light'); durumKarti(t, null);
+  totemYolu(t, 'dark'); durumKarti(t, null);
   let d = oyun.yeniDurum(); let t0 = 0;
   const oyuncular = ['ornek-oyuncu', 'baska', 'ucuncu', 'dorduncu'];
   for (let k = 0; k < 14; k++) { const r = oyun.oyna(d, oyuncular[k % 4], 1 + (k % 3), 1 + ((k * 2) % 5), (t0 += 3e5)); d = r.d; if (k === 13) console.log(r.yorum); }

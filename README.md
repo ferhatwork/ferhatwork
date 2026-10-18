@@ -2,14 +2,13 @@
 
 <img src="assets/durum.svg" width="100%" alt="ferhatwork --durum: Ferhat Özdemir, 9 yıl e-ticaret. Yayında: Profitcen, Sideleaf, Profitcen Tray. Yapımda: uncus.si.">
 
-<img src="assets/totem-yolu-dark.svg#gh-dark-mode-only" width="100%" alt="Mini Totem son bir yılın katkı takviminde köfte topluyor">
-<img src="assets/totem-yolu-light.svg#gh-light-mode-only" width="100%" alt="Mini Totem son bir yılın katkı takviminde köfte topluyor">
+<img src="assets/totem-yolu.svg" width="100%" alt="Mini Totem son bir yılın katkı takviminde köfte topluyor">
 
 <br>
 
 <img src="assets/oyun.svg" width="100%" alt="Köfte Mancınığı: açı ve güç seç, rüzgârı hesaba kat, kazanı vur">
 
-<p align="center"><b>Açıyı ve gücü seç, köfteyi fırlat.</b> Bir düğmeye bas, açılan sayfada gönder; sonucu GitHub birkaç saniyede yazar.<br>
+<p align="center"><b>Açıyı ve gücü seç, köfteyi fırlat.</b><br>Düğmeye basınca GitHub'ın "issue" sayfası açılır, her şey hazır doldurulmuştur: yeşil <b>Create</b> düğmesine basman yeter. Mancınık 10–20 saniye içinde atışı hesaplar, sonucu o sayfaya yazar ve buradaki sahne güncellenir.<br>
 <sub>Kazan 5 · tabak 3 · sepet 1 puan. Kazanı vuran seviyeyi geçirir. Rüzgâr her atışta değişir, sahnedeki bayrağa bak.</sub></p>
 
 <table align="center">
