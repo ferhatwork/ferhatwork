@@ -113,7 +113,7 @@ function totemYolu(t, tema) {
 <text class="l" x="${X0}" y="42">MİNİ TOTEM'İN KÖFTE YOLU</text>
 <text class="b" x="${X0 - 2}" y="78">Son bir yılda ${sayi(t.toplam)} katkı</text>
 <text class="k" x="${W - X0}" y="40" text-anchor="end" dy="12">en uzun seri ${s.enUzun} gün · ${s.aktif} üretken gün</text>
-<text class="k" x="${W - X0}" y="62" text-anchor="end" dy="12">her köfte bir gün · koyusu daha dolu</text>
+<text class="k" x="${W - X0}" y="62" text-anchor="end" dy="12">her köfte bir gün · köfte büyüdükçe o gün iş çok</text>
 ${kare}${kofte}
 <g><g class="zipla"><ellipse cx="0" cy="6" rx="10" ry="3" fill="#000" opacity=".25"/><image href="${webp('totem-kucuk.webp')}" x="-17" y="-44" width="34" height="49"/></g>
 <animateMotion dur="${DUR}s" repeatCount="indefinite" path="${yol} L${merkez(sira[N - 1]).join(' ')}" keyPoints="0;1;1" keyTimes="0;${sonT.toFixed(4)};1" calcMode="linear"/></g>

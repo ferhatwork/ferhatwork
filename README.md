@@ -8,8 +8,15 @@
 
 <img src="assets/oyun.svg" width="100%" alt="Köfte Mancınığı: açı ve güç seç, rüzgârı hesaba kat, kazanı vur">
 
-<p align="center"><b>Açıyı ve gücü seç, köfteyi fırlat.</b><br>Düğmeye basınca GitHub'ın "issue" sayfası açılır, her şey hazır doldurulmuştur: yeşil <b>Create</b> düğmesine basman yeter. Mancınık 10–20 saniye içinde atışı hesaplar, sonucu o sayfaya yazar ve buradaki sahne güncellenir.<br>
-<sub>Kazan 5 · tabak 3 · sepet 1 puan. Kazanı vuran seviyeyi geçirir. Rüzgâr her atışta değişir, sahnedeki bayrağa bak.</sub></p>
+<h3 align="center">Nasıl oynanır?</h3>
+
+<p align="center">
+<b>1.</b> Aşağıdaki tablodan bir düğme seç: satır <b>açı</b> (alçak, orta, yüksek), düğmedeki çubuklar <b>güç</b>.<br>
+<b>2.</b> GitHub'ın "New issue" sayfası açılır, her şey hazır yazılıdır. Hiçbir şeye dokunmadan yeşil <b>Create</b> düğmesine bas.<br>
+<b>3.</b> 10–20 saniye bekle: Mini Totem köfteyi fırlatır, sonucu o sayfaya yazar ("ıska, tabak 1,3 m geride" gibi). Profile dönünce atışını sahnede görürsün.
+</p>
+
+<p align="center"><sub>Hedefe göre ayar yap: köfte kısa düştüyse gücü artır, uzun düştüyse azalt. Bayrak sıradaki rüzgârı gösterir.<br>Kazan 5 · tabak 3 · sepet 1 puan. Kazanı vuran seviyeyi geçirir; 2. seviyeden sonra arada kaya çıkar, onu ancak yüksek açıyla aşarsın.</sub></p>
 
 <table align="center">
   <tr><th></th><th>güç 1 → 5</th></tr>
