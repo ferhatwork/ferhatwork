@@ -1,0 +1,31 @@
+name: Köfte Mancınığı
+on:
+  issues:
+    types: [opened]
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: profil-yaz
+  cancel-in-progress: false
+jobs:
+  at:
+    if: startsWith(github.event.issue.title, 'mancinik|')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node src/uret.mjs oyun
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OYUN_TUZU: ${{ secrets.OYUN_TUZU }}
+      - name: Skoru kaydet
+        run: |
+          git config user.name "mini-totem"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets oyun
+          git diff --cached --quiet && exit 0
+          git commit -m "Köfte Mancınığı: yeni atış"
+          for i in 1 2 3; do git push && break; git pull --rebase; done

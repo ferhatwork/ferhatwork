@@ -1,0 +1,32 @@
+name: Günlük yenileme
+on:
+  schedule:
+    - cron: '17 0 * * *'   # 03:17 İstanbul
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['src/**']
+permissions:
+  contents: write
+concurrency:
+  group: profil-yaz
+  cancel-in-progress: false
+jobs:
+  yenile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node src/uret.mjs gunluk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Değişiklik varsa kaydet
+        run: |
+          git config user.name "mini-totem"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets
+          git diff --cached --quiet && exit 0
+          git commit -m "Mini Totem günlük yenileme"
+          for i in 1 2 3; do git push && break; git pull --rebase; done

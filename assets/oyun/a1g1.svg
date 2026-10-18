@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 64" width="120" height="64" role="img" aria-label="alçak açı, güç 1"><title>alçak açı, güç 1</title>
+<style>.t{font:700 26px Georgia,serif;fill:#17120e}</style>
+<rect x="1" y="1" width="118" height="62" rx="14" fill="#E2B48A" stroke="#C68A58" stroke-width="2"/>
+<g transform="translate(14 46)"><line x1="0" y1="0" x2="22.5" y2="-13.0" stroke="#17120e" stroke-width="3" stroke-linecap="round"/><circle r="3.5" fill="#17120e"/><circle cx="24.2" cy="-14.0" r="4.5" fill="#a85d35"/></g>
+<rect x="46" y="37" width="7" height="5" rx="2" fill="#8B3F32"/><rect x="56" y="32" width="7" height="10" rx="2" fill="rgba(23,18,14,.18)"/><rect x="66" y="27" width="7" height="15" rx="2" fill="rgba(23,18,14,.18)"/><rect x="76" y="22" width="7" height="20" rx="2" fill="rgba(23,18,14,.18)"/><rect x="86" y="17" width="7" height="25" rx="2" fill="rgba(23,18,14,.18)"/><text class="t" x="108" y="42" text-anchor="end" style="font-size:20px">1</text></svg>
